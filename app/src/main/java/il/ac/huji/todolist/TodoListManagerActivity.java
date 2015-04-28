@@ -1,40 +1,28 @@
 package il.ac.huji.todolist;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.Uri;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ArrayAdapter;
-import android.widget.TextView;
-
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-import java.util.Objects;
 
 public class TodoListManagerActivity extends ActionBarActivity {
+    private DBHelper helper;
     private static final int ADD_REQUEST = 42;
     private ArrayAdapter<ItemOfTodo> adapterTodo;
     ArrayList<ItemOfTodo> theList = new ArrayList<ItemOfTodo>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        helper = new  DBHelper(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_todo_list_manager);
 
